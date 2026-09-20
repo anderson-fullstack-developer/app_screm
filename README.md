@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ScreenRoom — Real-time Screen Sharing Platform
 
-## Getting Started
+ScreenRoom is a full-stack web application for creating private rooms and sharing a screen with invited participants in real time.
 
-First, run the development server:
+The project is designed as a production-oriented screen-sharing experience inspired by the core sharing flow of tools such as Google Meet and Discord, with a strong focus on room access, authentication, security and real-time communication.
+
+## Core features
+
+- Create private sharing rooms
+- Generate unique invitation links
+- Real-time screen sharing
+- Join rooms as an invited participant
+- Optional room password protection
+- Participant access control
+- Remove participants from a room
+- End active sharing sessions
+- Authentication and authorization
+- Responsive interface
+- Production-oriented security controls
+
+## Tech stack
+
+**Frontend**  
+Next.js 16 · React 19 · TypeScript · Tailwind CSS
+
+**Backend & data**  
+Next.js · Node.js · PostgreSQL · Prisma ORM · Zod
+
+**Real-time communication**  
+WebRTC · LiveKit Client SDK · LiveKit Server SDK
+
+**Authentication & security**  
+Auth.js · HTTP-only cookies · RBAC · rate limiting · security headers · validation
+
+**Infrastructure & quality**  
+Redis · Docker · Vitest · Playwright · ESLint · Vercel
+
+## Architecture goals
+
+The project was built to explore and demonstrate:
+
+- real-time communication workflows;
+- secure room and participant management;
+- authenticated full-stack application architecture;
+- relational data modelling with PostgreSQL and Prisma;
+- server-side validation and authorization;
+- automated unit and end-to-end testing;
+- deployment-ready configuration.
+
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Additional commands:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run lint
+npm run typecheck
+npm run test
+npm run test:e2e
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Environment configuration is documented in `.env.example` and deployment notes are available in `DEPLOY.md`.
 
-## Learn More
+## Live demo
 
-To learn more about Next.js, take a look at the following resources:
+[Open ScreenRoom](https://app-screm.vercel.app)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Developer
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Developed by **Anderson Neto**.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[Portfolio](https://andersonneto.gt.tc) · [LinkedIn](https://linkedin.com/in/anderson-fullstack-developer) · [GitHub](https://github.com/anderson-fullstack-developer)
