@@ -281,14 +281,16 @@ export async function reopenRoom(roomId: string, actorId: string): Promise<void>
   logger.info({ roomId, slug: room.slug }, "Room reopened");
 }
 
+/** Returns true when the status actually changed. ENDED rooms are never touched. */
 export async function setRoomStatus(
   roomId: string,
   status: "WAITING" | "LIVE",
-): Promise<void> {
-  await db.room.updateMany({
-    where: { id: roomId, status: { not: "ENDED" } },
+): Promise<boolean> {
+  const { count } = await db.room.updateMany({
+    where: { id: roomId, status: { notIn: ["ENDED", status] } },
     data: { status },
   });
+  return count > 0;
 }
 
 /**

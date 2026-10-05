@@ -69,6 +69,16 @@ instance**, so limits are softer than intended. Add a Redis:
 In the LiveKit Cloud project settings you can restrict which origins may
 request connections — add `https://<your-app>.vercel.app`.
 
+## 6b. LiveKit webhook (recommended)
+
+Keeps a room's LIVE/WAITING status correct even when the host's tab crashes
+or their phone loses signal (the browser never gets to say "stopped").
+
+LiveKit Cloud → project **Settings → Webhooks → Create** with URL
+`https://<your-app>.vercel.app/api/livekit/webhook`, signed with the same API
+key as `LIVEKIT_API_KEY`. No new env vars — requests are verified with
+`LIVEKIT_API_SECRET`.
+
 ## Self-hosting instead
 
 `docker-compose.yml` + `docker/livekit.yaml` run LiveKit + Redis locally. Point
