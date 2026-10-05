@@ -13,6 +13,11 @@ keys:
 logging:
   level: info
   json: false
+webhook:
+  # Reconciles room LIVE/WAITING status (see DEPLOY.md §6b).
+  api_key: devkey
+  urls:
+    - http://host.docker.internal:3000/api/livekit/webhook
 room:
   auto_create: false
   empty_timeout: 300
