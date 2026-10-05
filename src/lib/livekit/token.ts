@@ -12,6 +12,11 @@ export function livekitRoomName(roomId: string): string {
   return `sr_${roomId}`;
 }
 
+/** Inverse of `livekitRoomName`. Null for rooms this app did not create. */
+export function roomIdFromLivekitName(name: string): string | null {
+  return name.startsWith("sr_") && name.length > 3 ? name.slice(3) : null;
+}
+
 /** Stable, backend-assigned participant identity. */
 export function livekitIdentity(identity: Identity): string {
   return `${identity.kind}:${identity.id}`;
@@ -102,6 +107,24 @@ export async function disconnectParticipant(
     );
   } catch {
     /* participant not connected — nothing to do */
+  }
+}
+
+/**
+ * Ask LiveKit whether anyone in the room is still publishing a screen share.
+ * Source of truth for the room's LIVE/WAITING status — survives a host whose
+ * browser died without telling the app.
+ */
+export async function roomHasScreenShare(roomId: string): Promise<boolean> {
+  try {
+    const participants = await getRoomService().listParticipants(
+      livekitRoomName(roomId),
+    );
+    return participants.some((p) =>
+      p.tracks.some((t) => t.source === TrackSource.SCREEN_SHARE),
+    );
+  } catch {
+    return false; // room no longer exists on the media server
   }
 }
 
