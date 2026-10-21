@@ -21,8 +21,9 @@ configured database.
 
 - `auth` — homepage, register→auto-login→logout, wrong password, weak-password
   validation, protected dashboard, log back in
-- `admin` — non-admin gets 404 on `/admin` and no create-room CTA; admin sees
-  the panel + broadcast toggle
+- `admin` — non-admin gets 404 on `/admin` and `/admin/users` and no
+  create-room CTA; admin sees the panel + broadcast toggle, opens the user list
+  from the panel and finds a freshly registered user by searching
 - `room` — admin creates a public room → shows in the panel → ends it; a fresh
   viewer auto-joins, chat propagates host↔viewer, viewer has no share button;
   unknown slug is 404

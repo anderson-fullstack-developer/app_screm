@@ -7,6 +7,7 @@ import { requireSession } from "@/lib/auth/guards";
 import { isAdminEmail } from "@/lib/auth/admin";
 import { listAllRooms } from "@/server/services/room-queries";
 import { getPlatformSettings } from "@/server/services/settings-service";
+import { getUserStats } from "@/server/services/user-queries";
 import { blobEnabled } from "@/lib/media/blob";
 import { CreateRoomDialog } from "@/features/rooms/create-room-dialog";
 import { AdminRoomRow } from "@/features/admin/admin-room-row";
@@ -24,9 +25,10 @@ export default async function AdminPage() {
   const session = await requireSession("/admin");
   if (!isAdminEmail(session.user.email)) notFound();
 
-  const [rooms, settings] = await Promise.all([
+  const [rooms, settings, userStats] = await Promise.all([
     listAllRooms(),
     getPlatformSettings(),
+    getUserStats(),
   ]);
   const live = rooms.filter((r) => r.status === "LIVE");
   const waiting = rooms.filter((r) => r.status === "WAITING");
@@ -48,10 +50,24 @@ export default async function AdminPage() {
           <CreateRoomDialog triggerLabel="Criar sala e transmitir" />
         </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <Stat label="Ao vivo" value={live.length} accent />
           <Stat label="À espera" value={waiting.length} />
           <Stat label="Terminadas" value={ended.length} />
+          <Link
+            href="/admin/users"
+            className="group rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+          >
+            <Card className="h-full p-4 transition-colors group-hover:border-border-strong">
+              <CardDescription>Utilizadores</CardDescription>
+              <p className="mt-1 text-2xl font-semibold text-foreground">
+                {userStats.total}
+              </p>
+              <p className="mt-1 text-xs text-primary group-hover:underline">
+                +{userStats.newLast7Days} esta semana · Ver todos →
+              </p>
+            </Card>
+          </Link>
         </div>
 
         <AdminSettings
