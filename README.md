@@ -7,6 +7,8 @@
 
 **Real-time screen sharing in private rooms.** Create a room, share the invite link and stream your screen to the people you let in, with full control over who watches.
 
+**Status: in active development.** Core rooms, invites, host controls and screen sharing work; the UX and room experience are still being improved.
+
 **Live demo:** [app-screm.vercel.app](https://app-screm.vercel.app)
 
 ![ScreenRoom home page](docs/screenshots/home.png)
