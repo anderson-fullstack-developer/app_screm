@@ -1,6 +1,6 @@
 # ScreenRoom
 
-[![CI](https://github.com/anderson-fullstack-developer/app_screm/actions/workflows/ci.yml/badge.svg)](https://github.com/anderson-fullstack-developer/app_screm/actions/workflows/ci.yml)
+[![CI](https://github.com/anderson-fullstack-developer/screenroom/actions/workflows/ci.yml/badge.svg)](https://github.com/anderson-fullstack-developer/screenroom/actions/workflows/ci.yml)
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)

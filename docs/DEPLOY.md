@@ -5,7 +5,7 @@ The app is a standard Next.js project. Postgres runs on **Neon**, media on
 
 ## 1. Import the repo
 
-Vercel → **Add New… → Project** → import `anderson-fullstack-developer/app_screm`.
+Vercel → **Add New… → Project** → import `anderson-fullstack-developer/screenroom`.
 Framework preset is detected as **Next.js**. Leave the build settings default —
 `vercel.json` pins the framework and the `fra1` region, and the `vercel-build`
 script runs `prisma migrate deploy && prisma generate && next build`.
