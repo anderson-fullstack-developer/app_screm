@@ -53,3 +53,9 @@ next-env.d.ts
 # OS / IDE
 .DS_Store
 Thumbs.db
+
+# AI assistant instructions (kept locally, not published)
+AGENTS.md
+CLAUDE.md
+.claude/
+documentatio.md
